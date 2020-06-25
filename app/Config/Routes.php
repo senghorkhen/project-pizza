@@ -33,7 +33,7 @@ $routes->setAutoRoute(true);
 // $routes->get('/', 'Home::index');
 
 $routes->group('pizza', function($routes) {
-	$routes->add('login', Pizza::login);
+	$routes->add('/', Pizza::index);
 });
 
 /**
