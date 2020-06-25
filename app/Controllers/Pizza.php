@@ -6,5 +6,5 @@ class Pizza extends BaseController
 	{
 		return view('index');
 	}
-
+	
 }
