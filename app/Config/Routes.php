@@ -32,10 +32,13 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 // $routes->get('/', 'Home::index');
 
-$routes->group('pizza', function($routes) {
-	$routes->add('/', 'Pizza::index');
-	
+$routes->group('user', function($routes) {
+	$routes->add('/', 'User::addPizza');	
 });
+
+$routes->get('signup', 'User::login');
+$routes->match(['get','post'],'/signin', 'User::register');
+
 
 /**
  * --------------------------------------------------------------------

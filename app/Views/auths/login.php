@@ -34,4 +34,11 @@
     </form>
   </div>
 </div>
+<hr>
+    <ul>
+        <?php if(isset($messages)): ?>
+            <?= $messages->listErrors() ?>
+        <?php endif ?>
+    </ul>
+
 <?= $this->endSection() ?>
