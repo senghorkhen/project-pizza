@@ -7,12 +7,12 @@ class UserModel extends Model
     protected $returnType = 'array';
     protected $allowedFields = ['email', 'password', 'address'];
 
-    public function register($register)
+    public function createRegister($registerInfo)
     {
         $this->insert([
-                'email'=>$register['email'],
-                'password'=>$register['password'],
-                'address'=>$register['address'],
+                'email'=>$registerInfo['email'],
+                'password'=>password_hash($registerInfo['password'], PASSWORD_DEFAULT),
+                'address'=>$registerInfo['address'],
         ]);
     }
 

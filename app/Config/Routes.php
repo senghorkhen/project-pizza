@@ -16,7 +16,7 @@ if (file_exists(SYSTEMPATH . 'Config/Routes.php'))
  * --------------------------------------------------------------------
  */
 $routes->setDefaultNamespace('App\Controllers');
-$routes->setDefaultController('Home');
+$routes->setDefaultController('User');
 $routes->setDefaultMethod('index');
 $routes->setTranslateURIDashes(false);
 $routes->set404Override();
@@ -32,13 +32,14 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 // $routes->get('/', 'Home::index');
 
-$routes->group('user', function($routes) {
-	$routes->add('/', 'User::addPizza');	
-});
+// route of user
+$routes->add('/', 'User::index');
+$routes->add('signin', 'User::index');
+$routes->add('/signup','User::register');
+// $routes->match(['get','post'],'/signup','User::register');
 
-$routes->get('signup', 'User::login');
-$routes->match(['get','post'],'/signin', 'User::register');
-
+// route of peperoni
+$routes->add('viewPizza', 'Peperoni::pizza');
 
 /**
  * --------------------------------------------------------------------

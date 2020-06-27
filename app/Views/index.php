@@ -90,6 +90,14 @@
 		  <input type="submit" value="CREATE" class="createBtn text-warning">
         </div>
         </form>
+		<!-- show message error if you don't complete name pizza and price -->
+		<?php if(isset($validation)): ?>
+			<div class="col-12">
+				<div class="alert alert-danger">
+				<?= $validation->listErrors() ?> 
+				</div>
+			</div>
+		<?php endif ?>
       </div>
     </div>
   </div>
