@@ -34,12 +34,13 @@ $routes->setAutoRoute(true);
 
 // route of user
 $routes->add('/', 'User::index');
+$routes->get('logout', 'Users::logout');
 $routes->add('signin', 'User::index');
-$routes->add('/signup','User::register');
-// $routes->match(['get','post'],'/signup','User::register');
+// $routes->add('/signup','User::register');
+$routes->match(['get','post'],'/signup','User::register');
 
-// route of peperoni
-$routes->add('viewPizza', 'Peperoni::pizza');
+// route of pizza
+$routes->add('viewPizza', 'Peperoni::addPizza');
 
 /**
  * --------------------------------------------------------------------

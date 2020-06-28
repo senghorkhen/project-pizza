@@ -18,17 +18,25 @@
           </div>
           <div class="form-group">
             <label class="text-uppercase small">Password</label>
-            <input type="password" class="form-control" placeholder="Password" name="password" value="">
+            <input type="password" class="form-control" placeholder="Password" name="password" value="<?= set_value('password') ?>">
           </div>
-          <div class="form-group">
+            <div class="form-group">
             <label class="text-uppercase small">Address</label>
             <textarea name="address" class="form-control" placeholder="Address" value="<?= set_value('address') ?>"></textarea>
-          </div>
+          </div>  
           <div class="form-check">
             <label class="form-check-label">
-                <input type="checkbox" class="form-check-input">I'm a manager
+                <input type="checkbox" name="role" class="form-check-input" value="<?= set_value('role') ?>">I'm a manager
             </label>
         </div>
+        <br>
+          <?php if(isset($validation)): ?>
+          <div class="col-12">
+            <div class="alert alert-danger" role="alert">
+              <?= $validation->listErrors() ?> 
+            </div>
+          </div>
+          <?php endif ?>
         </div>
       </div>
       <div class="auth__form_actions">
@@ -41,15 +49,10 @@
           </a>
         </div>
       </div>
+
     </form>
-    <?php if(isset($validation)): ?>
-			<div class="col-12">
-				<div class="alert alert-danger" role="alert">
-				<?= $validation->listErrors() ?> 
-				</div>
-			</div>
-		<?php endif ?>
+
   </div>
 </div>
-    
+
 <?= $this->endSection() ?>
