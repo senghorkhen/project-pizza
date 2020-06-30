@@ -26,9 +26,11 @@
           </div>
           <div class="form-check">
             <label class="form-check-label">
-                <input type="checkbox" class="form-check-input" name="role" value="">I'm a manager
+                <input type="checkbox" class="form-check-input" name="role" value="1">I'm a manager
             </label>
           </div><br>
+
+           <!-- alert message error if you do not complete email and password -->
           <?php if(isset($validation)) :?>
         <div class="col-12">
           <div class="alert alert-danger" role="alert">
@@ -36,6 +38,7 @@
           </div>
         </div>
       <?php endif; ?>
+      
         </div>
       </div>
       <div class="auth__form_actions">

@@ -26,7 +26,7 @@
 					<tr>
 						<td class="pizzaName"><?= $pizza['name']; ?></td>
 						<td><?= $pizza['ingredient']; ?></td>
-						<td class="text-success font-weight-bolder"><?= $pizza['price']."$"; ?></td>
+						<td class="text-success font-weight-bolder"><?= $pizza['price']." $"; ?></td>
 						<?php if(session()->get('role') == 1):?>
 						<td>
 							<a href="/edit/<?= $pizza['id'] ?>" data-toggle="modal" data-target="#updatePizza"><i class="material-icons text-info" data-toggle="tooltip" title="Edit Pizza!" data-placement="left">edit</i></a>
@@ -57,12 +57,12 @@
         
         <!-- Modal body -->
         <div class="modal-body text-right">
-			<form  action="/add" method="post">
+			<form  action="/views" method="post">
 				<div class="form-group">
 					<input type="text" class="form-control" name="name" placeholder="Pizza name">
 				</div>
 				<div class="form-group">
-					<input type="number" class="form-control" name="price" placeholder="Prize in dollars">
+					<input type="number" class="form-control" name="price" placeholder="Price in dollars">
 				</div>
 				<div class="form-group">
 					<textarea placeholder="Ingredients" name="ingredient" class="form-control"></textarea>
@@ -99,19 +99,19 @@
         </div>
         <!-- Modal body -->
         <div class="modal-body text-right">
-			<form  action="views/updatePizza" method="post">
+			<form  action="/views" method="post">
 				<div class="form-group">
 					<input type="text" class="form-control" name="name">
 				</div>
 				<div class="form-group">
-					<input type="number" class="form-control" name = "price">
+					<input type="number" class="form-control" name="price">
 				</div>
 				<div class="form-group">
-					<textarea class="form-control" name = "ingredient"></textarea>
+					<textarea class="form-control" name="ingredient"></textarea>
 				</div>
 			<a data-dismiss="modal" class="closeModal">DISCARD</a>
 			  &nbsp;
-			  <input type="hidden" name = "id">
+			  <input type="hidden" name="id">
 		  <input type="submit" value="UPDATE" class="createBtn text-warning">
         </div>
         </form>
