@@ -10,10 +10,8 @@ class UserRole{
                         ->first();
         $user = $pizza->where('password',$data['password'])
                         ->first();
-    
         if($user)
-            return true;
-        
+        return true;
         return password_verify($data['password'],$user['password']);
     }
 }

@@ -18,11 +18,11 @@
 						<th>Name</th>
 						<th>Ingredients</th>
 						<th>Price</th>
-					<?php if(session()->get('role') == 1):?>
+					<?php if(session()->get('role') == 1): ?>
 						<th>Status</th>
 					<?php endif ?>
 					</tr>
-					<?php foreach($listPizza as $pizza) : ?>
+					<?php foreach($listPizza as $pizza): ?>
 					<tr>
 						<td class="pizzaName"><?= $pizza['name']; ?></td>
 						<td><?= $pizza['ingredient']; ?></td>
@@ -57,7 +57,7 @@
         
         <!-- Modal body -->
         <div class="modal-body text-right">
-			<form  action="dashboard/add" method="post">
+			<form  action="/add" method="post">
 				<div class="form-group">
 					<input type="text" class="form-control" name="name" placeholder="Pizza name">
 				</div>
@@ -73,13 +73,14 @@
 		  <input type="submit" value="CREATE" class="createBtn text-warning">
         </div>
         </form>
-		<?php if(isset($validation)) :?>
-        <div class="col-12">
-          <div class="alert alert-danger" role="alert">
-            <?= $validation->listErrors(); ?>
-          </div>
-        </div>
-      <?php endif; ?>
+		<!-- show message error if you don't complete name and price of pizza -->
+		<?php if(isset($validation)): ?>
+			<div class="col-12">
+				<div class="alert alert-danger">
+				<?= $validation->listErrors() ?> 
+				</div>
+			</div>
+		<?php endif ?>
       </div>
     </div>
   </div>
@@ -98,7 +99,7 @@
         </div>
         <!-- Modal body -->
         <div class="modal-body text-right">
-			<form  action="dashboard/updatePizza" method="post">
+			<form  action="views/updatePizza" method="post">
 				<div class="form-group">
 					<input type="text" class="form-control" name="name">
 				</div>

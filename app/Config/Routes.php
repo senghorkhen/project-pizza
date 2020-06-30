@@ -36,8 +36,8 @@ $routes->add('/', 'Users::index');
 $routes->add('signin', 'Users::index');
 $routes->add('logout', 'Users::logout');
 $routes->match(['get','post'],'signup','Users::register');
-$routes->add('dashboard','Pizzas::index');
-$routes->add('dashboard/add','Pizzas::addPizza');
+$routes->add('views','Pizzas::index');
+$routes->add('add','Pizzas::addPizza');
 
 $routes->add('delete/(:num)','Pizzas::deletePizza/$1');
 $routes->add('edit/(:num)','Pizzas::editPizza/$1');
