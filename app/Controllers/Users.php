@@ -28,7 +28,7 @@ class Users extends BaseController
 							  ->first();
 				$this->setUserSession($user);
 				// direct to rout dashboard
-				return redirect()->to('dashboard');
+				return redirect()->to('views');
 			}
 		}
 		return view('auths/login',$data);
@@ -40,7 +40,7 @@ class Users extends BaseController
 			'email' => $user['email'],
 			'password' => $user['password'],
 			'address' => $user['address'],
-			'role' => $user['role'],
+			'role' => $user['role']
 		];
 
 		session()->set($data);
@@ -58,7 +58,7 @@ class Users extends BaseController
 				'email' => 'required|valid_email',
 				'password' => 'required|alpha_numeric_punct',
 				// 'address' => 'required',
-				// 'role' => 'required',
+				// 'role' => 'required'
 			];
 			if(!$this->validate($rules)){
 				$data['validation'] = $this->validator;
@@ -74,7 +74,7 @@ class Users extends BaseController
 
 				$pizza->save($newData);
 				$session = session();
-				$session->setFlashdata('success','Successful Registration');
+				// $session->setFlashdata('success','Successful Registration');
 				return redirect()->to('/');
 			}
 		}

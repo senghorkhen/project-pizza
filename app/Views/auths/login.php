@@ -7,7 +7,7 @@
     </div>
   </div>
   <div class="auth__body">
-    <form class="auth__form" autocomplete="off" action="/dashboard" method="post">
+    <form class="auth__form" autocomplete="off" action="/views" method="post">
       <div class="auth__form_body">
         <h3 class="auth__form_title">Peperoni App</h3>
         <hr>

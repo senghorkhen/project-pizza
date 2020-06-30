@@ -13,14 +13,15 @@ class Pizzas extends BaseController
 		helper(['form']);
 		$data = [];
 		if($this->request->getMethod() == "post"){
+			// do the validation
 			$rules = [
 				'name'=>'required|alpha_numeric',
-				'price'=>'required|min_length[1]|max_length[50]|numeric',
-				'ingredient'=>'required'
+				'price'=>'required|min_length[1]|max_length[50]|numeric'
+				// 'ingredient'=>'required'
 			];
 		    if(!$this->validate($rules)){
 				$data['validation'] = $this->validator;
-				return redirect()->to('/dashboard');
+				return redirect()->to('/views');
 			}
 			else{			
 				$pizza = new PizzaModel();
@@ -30,7 +31,7 @@ class Pizzas extends BaseController
 					'ingredient'=>$this->request->getVar('ingredient'),
 				);
 				$pizza->createPizza($pizzaData);
-				return redirect()->to('/dashboard');
+				return redirect()->to('/views');
 			}
 	    }	
 		return view('index',$data);
@@ -48,7 +49,7 @@ class Pizzas extends BaseController
 	public function updatePizza(){
 		$pizza = new PizzaModel();
 		$pizza->update($_POST['id'], $_POST);
-		return redirect()->to('/dashboard');
+		return redirect()->to('/views');
 	}
 
 	//--------------------------detele pizza--------------------------
@@ -56,6 +57,6 @@ class Pizzas extends BaseController
 		$pizza = new PizzaModel();
 		$pizza->find($id);
 		$delete = $pizza->delete($id);
-		return redirect()->to('/dashboard');
+		return redirect()->to('/views');
 	}
 }

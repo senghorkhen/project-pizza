@@ -12,7 +12,7 @@ class PizzaModel extends Model{
         $this->insert([
             'name' => $pizzaInfo['name'],
             'price' => $pizzaInfo['price'],
-            'ingredient' => $pizzaInfo['ingredient'],
+            'ingredient' => $pizzaInfo['ingredient']
         ]);
     }
 
