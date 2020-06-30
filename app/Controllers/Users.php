@@ -42,29 +42,26 @@ class Users extends BaseController
 			'address' => $user['address'],
 			'role' => $user['role']
 		];
-
 		session()->set($data);
 		return true;
 	}	
-// register before login
+
+	// register your account before login
 	public function register()
 	{
 		helper(['form']);
-
 		$data = [];
-
 		if($this->request->getMethod() == "post"){
+			// do the validation
 			$rules = [
 				'email' => 'required|valid_email',
 				'password' => 'required|alpha_numeric_punct',
-				// 'address' => 'required',
-				// 'role' => 'required'
 			];
 			if(!$this->validate($rules)){
 				$data['validation'] = $this->validator;
 			}else{
 				$pizza = new UserModel();
-
+				// insert to database
 				$newData = [
 					'email' => $this->request->getVar('email'),
 					'password' => $this->request->getVar('password'),
@@ -74,7 +71,7 @@ class Users extends BaseController
 
 				$pizza->save($newData);
 				$session = session();
-				// $session->setFlashdata('success','Successful Registration');
+				$session->setFlashdata('success','Successful For Register');
 				return redirect()->to('/');
 			}
 		}

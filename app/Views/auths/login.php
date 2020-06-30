@@ -23,6 +23,8 @@
             <label class="text-uppercase small">Password</label>
             <input type="password" class="form-control" name="password" id="password" value="<?= set_value('password') ?>"> 
           </div>
+
+          <!-- alert message error if you do not complete email and password -->
           <?php if(isset($validation)) :?>
         <div class="col-12">
           <div class="alert alert-danger" role="alert">
@@ -30,6 +32,7 @@
           </div>
         </div>
       <?php endif; ?>
+      
         </div>
       </div>
       <div class="auth__form_actions">
