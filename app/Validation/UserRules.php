@@ -2,7 +2,7 @@
 namespace App\Validation;
 use App\Models\UserModel;
 
-class UserRole{
+class UserRules{
     public function validatUser(string $str, string $fields, array $data)
     {
         $pizza = new UserModel();
