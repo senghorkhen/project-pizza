@@ -26,7 +26,7 @@
           </div>
           <div class="form-check">
             <label class="form-check-label">
-                <input type="checkbox" class="form-check-input" name="role" value="1">I'm a manager
+                <input type="checkbox" class="form-check-input" name="role" id="role" value="1">I'm a manager
             </label>
           </div><br>
 
@@ -46,7 +46,7 @@
           NEXT
         </button>
         <div class="mt-2">
-          <!-- rout -->
+          <!-- route -->
           <a href="/signin" class="small text-uppercase">
             SIGN IN INSTEAD
           </a>

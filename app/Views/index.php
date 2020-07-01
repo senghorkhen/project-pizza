@@ -6,7 +6,7 @@
 			<div class="col-2"></div>
 			<div class="col-8">
 				<div class="text-right">
-				<?php if(session()->get('role') == 1):?>
+				<?php if(session()->get('role') == 1): ?>
 					<a href="" class="btn btn-warning btn-sm text-white font-weight-bolder" data-toggle="modal" data-target="#createPizza">
 						<i class="material-icons float-left" data-toggle="tooltip" title="Add Pizza!" data-placement="left">add</i>&nbsp;Add
 					</a>
@@ -34,7 +34,6 @@
 						</td>
 						<?php endif ?>
 					</tr>
-
 					<?php endforeach; ?>
 				</table>
 			</div>
@@ -111,7 +110,7 @@
 				</div>
 			<a data-dismiss="modal" class="closeModal">DISCARD</a>
 			  &nbsp;
-			  <input type="hidden" name="id">
+			  <input type="hidden" name="id" value="<?= $pizza['id'] ?>">
 		  <input type="submit" value="UPDATE" class="createBtn text-warning">
         </div>
         </form>
