@@ -8,6 +8,7 @@ class Users extends BaseController
 		helper(['form']);
 		$data = [];
 		if($this->request->getMethod() == "post"){
+			// do the validation
 			$rules = [
 				'email' => 'required|valid_email',
 				'password' => 'required|alpha_numeric_punct|validateUser[email,password]'
@@ -27,7 +28,7 @@ class Users extends BaseController
 				$user = $pizza->where('password',$this->request->getVar('password'))
 							  ->first();
 				$this->setUserSession($user);
-				// direct to rout dashboard
+
 				return redirect()->to('views');
 			}
 		}
@@ -40,7 +41,7 @@ class Users extends BaseController
 			'email' => $user['email'],
 			'password' => $user['password'],
 			'address' => $user['address'],
-			'role' => $user['role']
+			'role' => $user['role'],
 		];
 		session()->set($data);
 		return true;
@@ -62,14 +63,14 @@ class Users extends BaseController
 			}else{
 				$pizza = new UserModel();
 				// insert to database
-				$newData = [
+				$dataInfo = [
 					'email' => $this->request->getVar('email'),
 					'password' => $this->request->getVar('password'),
 					'address' => $this->request->getVar('address'),
 					'role' => $this->request->getVar('role'),
 				];
 
-				$pizza->save($newData);
+				$pizza->save($dataInfo);
 				$session = session();
 				$session->setFlashdata('success','Successful For Register');
 				return redirect()->to('/');
