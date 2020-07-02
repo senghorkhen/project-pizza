@@ -2,10 +2,9 @@
 <?= $this->section('content') ?>
 <div class="auth">
   <div class="auth__header">
-    
   </div>
   <div class="auth__body">
-    <form class="auth__form" autocomplete="off" action="/views" method="post">
+    <form class="auth__form" autocomplete="off" action="/register" method="post">
       <div class="auth__form_body">
         <h3 class="auth__form_title">
         <img src="images/logo.svg" alt="" width="50">
@@ -14,45 +13,43 @@
         <div>
           <div class="form-group">
             <label class="text-uppercase small">Email</label>
-            <input type="email" class="form-control" name="email" id="email" value="<?= set_value('email') ?>"> 
+            <input type="text" class="form-control" placeholder="Enter email" name = "email">
           </div>
           <div class="form-group">
             <label class="text-uppercase small">Password</label>
-            <input type="password" class="form-control" name="password" id="password" value="<?= set_value('password') ?>"> 
+            <input type="password" class="form-control" placeholder="Password" name = "password">
           </div>
           <div class="form-group">
             <label class="text-uppercase small">Address</label>
-            <textarea name="address"  class="form-control" placeholder="Address" value="<?= set_value('address') ?>"></textarea>
+            <textarea class="form-control" placeholder="Address" name = "address"></textarea>
           </div>
           <div class="form-check">
             <label class="form-check-label">
-                <input type="checkbox" class="form-check-input" name="role" id="role" value="1">I'm a manager
+                <input type="checkbox" class="form-check-input" name = "checkUser"value="1">I'm a manager
             </label>
-          </div><br>
-
-           <!-- alert message error if you do not complete email and password -->
-          <?php if(isset($validation)) :?>
-        <div class="col-12">
-          <div class="alert alert-danger" role="alert">
-            <?= $validation->listErrors(); ?>
-          </div>
         </div>
-      <?php endif; ?>
-      
+        <!-- alert message error if form empty -->
+        <?php if(isset($validation)): ?>
+            <div class="col-12">
+              <div class="alert alert-danger" role="alert">
+                <?= $validation->listErrors(); ?>
+              </div>
+            </div>
+          <?php endif; ?>
         </div>
       </div>
       <div class="auth__form_actions">
-        <button type="submit" class="btn btn-primary btn-lg btn-block">
+        <button class="btn btn-primary btn-lg btn-block">
           NEXT
         </button>
         <div class="mt-2">
-          <!-- route -->
           <a href="/signin" class="small text-uppercase">
             SIGN IN INSTEAD
           </a>
         </div>
       </div>
+
     </form>
-  </div>
+ 
 </div>
 <?= $this->endSection() ?>
