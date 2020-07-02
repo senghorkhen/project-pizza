@@ -1,17 +1,13 @@
-<?php
+<?php 
 namespace App\Validation;
 use App\Models\UserModel;
-
 class UserRules{
-    public function validatUser(string $str, string $fields, array $data)
-    {
-        $pizza = new UserModel();
-        $user = $pizza->where('email',$data['email'])
-                        ->first();
-        $user = $pizza->where('password',$data['password'])
-                        ->first();
-        if($user)
-        return true;
+    public function validateUser(string $str,$fields,array $data){
+        $model = new UserModel();
+        $user = $model->where('email',$data['email'])->first();
+        if(!$user){
+            return false;
         return password_verify($data['password'],$user['password']);
+        }
     }
 }

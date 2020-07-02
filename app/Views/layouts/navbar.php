@@ -10,11 +10,11 @@
 
   <!-- Navbar links -->
   <div class="collapse navbar-collapse" id="collapsibleNavbar">
-    <ul class="nav navbar-nav ml-auto">
+    <ul class="nav navbar-nav ml-auto ">
       <li class="nav-item">
-      <a class="nav-link text-uppercase" href="/#">
+        <a class="nav-link text-uppercase" href="/logout">
         <?php $username = strstr(session()->get('email'),'@',true) ?>
-            <?= $username ?>
+            <?= $username ?>        
         </a>
         <a class="nav-link text-uppercase" href="/logout">Logout</a>
       </li>

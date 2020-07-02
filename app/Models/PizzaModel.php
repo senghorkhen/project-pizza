@@ -1,19 +1,13 @@
-<?php
-namespace App\Models;
+<?php namespace App\Models;
+
 use CodeIgniter\Model;
 
-class PizzaModel extends Model{
-    protected $table = "peperoi_info";
+class PizzaModel extends Model
+{
+    protected $table      = 'pizzas';
     protected $primaryKey = 'id';
+
     protected $returnType     = 'array';
-    protected $allowedFields = ['name','price','ingredient'];
-    
-    public function createPizza($pizzaInfo){
-        $this->insert([
-            'name' => $pizzaInfo['name'],
-            'price' => $pizzaInfo['price'],
-            'ingredient' => $pizzaInfo['ingredient'],
-        ]);
-    }
+    protected $allowedFields = [ 'name', 'price','ingredients'];
 
 }
