@@ -6,7 +6,6 @@ class PizzaModel extends Model
 {
     protected $table      = 'pizzas';
     protected $primaryKey = 'id';
-
     protected $returnType     = 'array';
     protected $allowedFields = [ 'name', 'price','ingredients'];
 

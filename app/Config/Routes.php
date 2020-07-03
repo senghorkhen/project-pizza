@@ -16,7 +16,7 @@ if (file_exists(SYSTEMPATH . 'Config/Routes.php'))
  * --------------------------------------------------------------------
  */
 $routes->setDefaultNamespace('App\Controllers');
-$routes->setDefaultController('User');
+$routes->setDefaultController('Users');
 $routes->setDefaultMethod('index');
 $routes->setTranslateURIDashes(false);
 $routes->set404Override();
@@ -32,17 +32,18 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 
 // Routes for User
-$routes->add('/', 'User::index');
-$routes->add('signin', 'User::index');
-$routes->add('loginAccount', 'User::loginAccount');
-$routes->add('signup', 'User::signup');
-$routes->get('logout', 'User::logout');
-$routes->add('register','User::registerAccount');
+$routes->add('/', 'Users::index');
+$routes->add('signin', 'Users::index');
+$routes->add('loginAccount', 'Users::loginAccount');
+$routes->add('signup', 'Users::signup');
+$routes->get('logout', 'Users::logout');
+$routes->add('register','Users::registerAccount');
 
 // Route For Pizza
-$routes->get('pizza','Pizza::index');
-$routes->get('delete/(:num)','Pizza::deletePizza/$1');
-$routes->get('edit/(:num)','Pizza::editPizza/$1');
+$routes->get('pizza','Pizzas::index');
+$routes->get('delete/(:num)','Pizzas::deletePizza/$1');
+$routes->get('edit/(:num)','Pizzas::editPizza/$1');
+
 /**
  * --------------------------------------------------------------------
  * Additional Routing
