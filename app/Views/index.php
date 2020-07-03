@@ -5,7 +5,7 @@
 	<?php if(session()->get('error')): ?>
 				<div class="alert alert-danger alert-dismissible fade show">
 					<button type="button" class="close" data-dismiss="alert">&times;</button>
-					<strong>Error Message!:   </strong><?= session()->get('error')->listErrors() ?>
+					Error Message! <?= session()->get('error')->listErrors() ?>
 				</div>
 		<?php endif ?>
 		<div class="row">
@@ -13,7 +13,7 @@
 			<div class="col-8">
 				<div class="text-right">
 				
-				<?php if(session()->get('role') == 1):?>
+				<?php if(session()->get('role') == 1): ?>
 						<a href="" class="btn btn-warning btn-sm text-white font-weight-bolder" data-toggle="modal" data-target="#createPizza">
 						<i class="material-icons float-left" data-toggle="tooltip" title="Add Pizza!" data-placement="left">add</i>&nbsp;Add
 					</a>
@@ -36,7 +36,7 @@
 					  <td class="hide"><?= $pizza['id'] ?></td>
 						<td class="pizzaName"><?= $pizza['name']; ?></td>
 						<td><?= $pizza['ingredients']; ?></td>
-						<td class="text-success font-weight-bolder"><?= $pizza['price'].' $'; ?></td>
+						<td class="text-success font-weight-bolder"><?= $pizza['price']; ?>$</td>
 						<?php if(session()->get('role') == 1):?>
 						<td>
 							<a href="/edit/<?= $pizza['id'] ?>" data-toggle="modal" data-target="#updatePizza"><i class="material-icons text-info editPizza" data-toggle="tooltip" title="Edit Pizza!" data-placement="left">edit</i></a>
@@ -66,7 +66,7 @@
         
         <!-- Modal body -->
         <div class="modal-body text-right">
-			<form  action="pizza/createPizza" method="post">
+			<form  action="pizzas/createPizza" method="post">
 				<div class="form-group">
 					<input type="text" class="form-control" name="name" placeholder="Pizza name">
 				</div>
@@ -83,7 +83,7 @@
         </div>
         </form>
 		<!-- alert message error if form empty -->
-		<?php if(isset($validation)) :?>
+		<?php if(isset($validation)): ?>
         <div class="col-12">
           <div class="alert alert-danger" role="alert">
             <?= $validation->listErrors(); ?>
@@ -108,7 +108,7 @@
         </div>
         <!-- Modal body -->
         <div class="modal-body text-right">
-			<form  action="pizza/updatePizza" method="post">
+			<form  action="pizzas/updatePizza" method="post">
 			<input type="hidden" name="id" id="id">
 				<div class="form-group">
 					<input type="text" class="form-control" name="name" id = "name">

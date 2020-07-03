@@ -1,6 +1,6 @@
 <?php namespace App\Controllers;
 use App\Models\UserModel;
-class User extends BaseController
+class Users extends BaseController
 {
 	
 	public function index()
@@ -26,9 +26,10 @@ class User extends BaseController
 			];
 			$error = [
 				'password' => [
-					'validateUser' => 'password not match!'
+					'validateUser' => 'email and password not match!'
 				]
 			];
+
 			$email = $this->request->getVar('email');
 			if(!$this->validate($rules,$error)){
 				$data['message'] = $this->validator;
@@ -36,10 +37,11 @@ class User extends BaseController
 			}else{
 				$model = new UserModel();
 				$user = $model->where('email',$email)->first();
-							 
+				
+				// set session for user register success and then back to login and show Successfully
 				$this->setUserSession($user);
 				$session = session();
-				$session->setFlashdata('success','successful Register');
+				$session->setFlashdata('success','Successfully');
 				return redirect()->to('/pizza');
 			}
 
@@ -48,18 +50,19 @@ class User extends BaseController
 	}
 
 	public function setUserSession($user){
+		// set session for user
 		$data = [
 			'id' => $user['id'],
-			'address' => $user['address'],
-			'password' => $user['password'],
 			'email' => $user['email'],
+			'password' => $user['password'],
+			'address' => $user['address'],
 			'role' => $user['role']
 		];
-
 		session()->set($data);
 		return true;
 	}	
 
+	// register account
 	public function registerAccount()
 	{
 		$data = [];
@@ -67,14 +70,16 @@ class User extends BaseController
 		// validation form register
 		if($this->request->getMethod() == "post"){
 			$rules = [
-				'email'=>'required|valid_email',
-				'password'=>'required|alpha_numeric_punct',
+				'email'=> 'required|valid_email',
+				'password'=> 'required|alpha_numeric_punct',
+				'address' => 'required'
 			];
 			 if(!$this->validate($rules)){
 				$data['validation'] = $this->validator;
 				return view('auths/register',$data);
 
 			}else{
+				// insert to database
 				$userModel = new UserModel();
 				$email = $this->request->getVar('email');
 				$password = $this->request->getVar('password');
@@ -90,7 +95,7 @@ class User extends BaseController
 				$userModel->registerUser($userData);
 				$session = session();
 				$session->setFlashdata('success','Successfully');
-				return redirect()->to('/loginAccount');
+				return redirect()->to('/');
 			}
 		}
 

@@ -1,6 +1,6 @@
 <?php namespace App\Controllers;
 use App\Models\PizzaModel;
-class Pizza extends BaseController
+class Pizzas extends BaseController
 {
 	
 	public function index()
@@ -9,17 +9,19 @@ class Pizza extends BaseController
 		$data['pizzas'] = $pizza->findAll();
 		return view('index',$data);
 	}
+	
 	// add pizza to table in database
 	public function createPizza(){
 		$data = [];
 		if($this->request->getMethod() == "post"){
 			helper(['form']);
 			$rules = [
-				'name'=>'required|alpha_numeric',
-				'price'=>'required|min_length[1]|max_length[50]|numeric',
-				
-			];	
+				'name'=>'required|alpha_space',
+				'price'=>'required|min_length[1]|max_length[50]|numeric',	
+			];
+
 			 if($this->validate($rules)){
+				 // insert to database
 				$pizzaModel = new PizzaModel();
 				$pizzaName = $this->request->getVar('name');
 				$pizzaPrice = $this->request->getVar('price');
@@ -33,8 +35,8 @@ class Pizza extends BaseController
 
 			}else{
 				$sessionError = session();
-                		$validation = $this->validator;
-               			$sessionError->setFlashdata('error', $validation);
+                	$validation = $this->validator;
+               		$sessionError->setFlashdata('error', $validation);
 			}
 		}
 		return redirect()->to('/pizza');
@@ -50,16 +52,16 @@ class Pizza extends BaseController
 	}
 		// update piza data from table in database
 		public function updatePizza(){
-			$pizza = new PizzaModel();
-			$pizza->update($_POST['id'], $_POST);
-			return redirect()->to('/pizza');
-		}
+		$pizza = new PizzaModel();
+		$pizza->update($_POST['id'], $_POST);
+		return redirect()->to('/pizza');
+	}
 
 	// delete pizza data from table in database
 	public function deletePizza($id){
 		$pizza = new PizzaModel();
 		$pizza->find($id);
 		$delete = $pizza->delete($id);
-		return redirect()->to("/pizza");
+		return redirect()->to('/pizza');
 	}
 }
